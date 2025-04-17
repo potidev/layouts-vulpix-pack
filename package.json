@@ -22,7 +22,8 @@
     "prepare": "npm run build",
     "version": "node scripts/set-version.js",
     "copy-src-to-dist": "node scripts/copy-src-to-dist.js",
-    "clear-build": "rimraf dist"
+    "clear-build": "rimraf dist",
+    "preview": "cd ./preview/dashboard-01 && npm run dev"
   },
   "license": "ISC",
   "dependencies": {
