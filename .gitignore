@@ -1,0 +1,9 @@
+*.log
+.DS_Store
+node_modules
+.cache
+dist
+*storybook.log
+storybook-static
+scripts/local
+src/styles/css/tailwind.css

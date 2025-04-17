@@ -1,0 +1,86 @@
+{
+	"React create funcional component": {
+		"prefix": "rfc",
+		"scope": "typescriptreact",
+		"body": [
+			"import React from \"react\";",
+			"",
+			"import { cn } from \"@potidev/react-vulpix-pack\";",
+			"",
+			"type ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/}Props = {",
+			"  className?: string;",
+			"};",
+			"",
+			"export const ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/} = ({ className }: ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/}Props) => {",
+			"  return (",
+			"    <div className={cn('flex flex-col', className)}>",
+			"      ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/}",
+			"    </div>",
+			"  );",
+			"};"
+		],
+		"description": "React create funcional component"
+	},
+	"React props in types file": {
+		"prefix": "rprops",
+		"scope": "typescript",
+		"body": [
+			"export type ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/}Props = {",
+			"  className?: string;",
+			"};"
+		],
+		"description": "React props in types file"
+	},
+	"React index component file": {
+		"prefix": "rindex",
+		"scope": "typescript",
+		"body": [
+			"export { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/} } from \"./component\";",
+			"export { ${TM_DIRECTORY/^.+[\\/\\\\]+(.*)$/${1:/capitalize}/}Props } from \"./types\";"
+		],
+		"description": "React index component file"
+	},
+	"React Create Context and Provider": {
+		"scope": "typescriptreact",
+		"prefix": "rcx",
+		"body": [
+		  "\"use client\";",
+		  "",
+		  "import React, { createContext, ReactNode, useContext } from \"react\";",
+		  "",
+		  "type $1ContextData = {};",
+		  "",
+		  "export const $1Context = createContext<$1ContextData>(",
+		  "  {} as $1ContextData,",
+		  ");",
+		  "",
+		  "type $1ProviderProps = {",
+		  "  children: ReactNode;",
+		  "};",
+		  "",
+		  "export const $1Provider = ({ children }: $1ProviderProps) => {",
+		  "  return <$1Context.Provider value={{}}>{children}</$1Context.Provider>;",
+		  "};",
+		  "",
+		  "export const use$1Context = () => useContext($1Context);",
+		  ""
+		],
+		"description": "React Create Context and Provider."
+	},
+	"Error Toast": {
+		"scope": "typescriptreact",
+		"prefix": "etoast",
+		"body": [
+			"toast({",
+      "  variant: \"destructive\",",
+      "  title: \"Ops... Ocorreu um erro\",",
+      "  description: \"Ocorreu um erro ao tentar realizar a ação. Tente novamente.\",",
+      "});"
+		]
+	},
+	"Pipe": {
+		"scope": "typescript,typescriptreact",
+		"prefix": "pipe",
+		"body": ["|"]
+	}
+}

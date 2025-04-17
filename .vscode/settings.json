@@ -1,0 +1,43 @@
+{
+  "cSpell.words": [
+    "anims",
+    "checkin",
+    "cnpj",
+    "dayjs",
+    "deselectable",
+    "esnext",
+    "imask",
+    "imgs",
+    "lottie",
+    "potidev",
+    "qrcode",
+    "reservate",
+    "Reservate",
+    "svgr",
+    "svgs",
+    "Unselecteble",
+    "vulpix",
+    "Vulpix",
+    "Whatsapp",
+    "youtube",
+    "zindexs"
+  ],
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "explorer.compactFolders": false,
+  "material-icon-theme.folders.associations": {
+    "sections": "layout",
+    "styled-components": "theme",
+    "forms": "docs",
+    "common": "", 
+    "storage": "database"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.configFile": "src/styles/css/global.css",
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass", ".*ClassName", "contentClass", "wrapperClass"]
+}
