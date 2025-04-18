@@ -12,6 +12,11 @@ export type TableDownloadReportOption = {
   id: string;
 
   /**
+   * Type for export
+   */
+  type: string;
+
+  /**
    * Icon to show in dropdown item
    */
   icon?: ReactNode;
