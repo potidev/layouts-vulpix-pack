@@ -41,7 +41,7 @@ import {
 
 import { ColumnUtils, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
 
-import { TableLimit, PaginationControl, TableSearch, TableColumnsControl, TableTotal } from "@/components";
+import { TableLimit, PaginationControl, TableSearch, TableColumnsControl, TableTotal, TableDownloadReport } from "@/components";
 
 import { TableLayoutProps } from "./types";
 import { TableActiveFilters } from "@/components/@table/TableActiveFilters";
@@ -53,8 +53,7 @@ export function TableLayout<TData, TValue>({
   columnsTitle,
   tableId,
   filters,
-  loadingReport,
-  onDownloadReport,
+  report,
   pagination,
   emptyListMessage = "Sem resultados",
 }: TableLayoutProps<TData, TValue>) {
@@ -111,45 +110,12 @@ export function TableLayout<TData, TValue>({
         <div className="flex w-full gap-2 flex-col md:flex-row">
           <TableSearch table={table} {...search} />
 
-          {!!onDownloadReport && (
+          {report && (
             <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="secondary"
-                    className="justify-between ml-auto md:w-fit md:justify-center cursor-pointer"
-                    fullWidth
-                    disabled={loadingReport}
-                  >
-                    Exportar relatório
-                    {loadingReport ? (
-                      <LoaderCircleIcon className="animate-spin h-4 w-4" />
-                    ) : (
-                      <ChevronDown />
-                    )}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem
-                    onClick={() => onDownloadReport("xlsx")}
-                    disabled={loadingReport}
-                  >
-                    <FileSpreadsheetIcon />
-                    Baixar em Excel
-                  </DropdownMenuItem>
-
-                  <DropdownMenuItem
-                    onClick={() => onDownloadReport("csv")}
-                    disabled={loadingReport}
-                  >
-                    <SheetIcon />
-                    Baixar em CSV
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <TableDownloadReport {...report} />
             </div>
           )}
-
+          
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
             {columnsTitle && <TableColumnsControl table={table} columnsTitle={columnsTitle} />}
             {pagination && pagination.total && <TableTotal total={pagination.total} />}

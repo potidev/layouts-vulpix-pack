@@ -1,0 +1,10 @@
+{
+  "name": "layouts-vulpix-pack-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "exemple": "cd ./exemples/dashboard && npm run dev",
+    "version": "cd ./lib && npm run version",
+    "publish": "cd ./lib && npm publish"
+  }
+}

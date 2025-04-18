@@ -1,12 +1,37 @@
 "use client";
 
 import { AppConstants } from "@/constants/AppConstants";
-import { ListPageLayout, TableLayout } from "@/@preview/@potidev/layouts-vulpix-pack";
+import { ListPageLayout, TableDownloadReportOption, TableLayout } from "@/@preview/@potidev/layouts-vulpix-pack";
 import { SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
 import { columnsTitle, getColumns, tableId } from "./columns";
 import { BookingsMock } from "@/mocks/BookingsMock";
+import { FileSpreadsheet, Sheet } from "lucide-react";
+import { useState } from "react";
+import { delay } from "@potidev/utils-vulpix-pack";
+
+const OPTIONS: TableDownloadReportOption[] = [
+  {
+    id: "xlsx",
+    label: "Baixar em Excel",
+    icon: <FileSpreadsheet />
+  },
+  {
+    id: "csv",
+    label: "Baixar em CSV",
+    icon: <Sheet />
+  }
+]
 
 export default function TableLayoutPage() {
+  const [loadingDownload, setLoadingDownload] = useState(false);
+
+  const onDownloadReport = async (option: TableDownloadReportOption) => {
+    setLoadingDownload(true);
+    console.log(option);
+    await delay(2000);
+    setLoadingDownload(false);
+  }
+
   return (
     <>
       <SidebarToolbar className="z-10" breadcrumbs={[
@@ -36,8 +61,11 @@ export default function TableLayoutPage() {
               ],
               onRemoveFilter: () => {},
             }}
-            onDownloadReport={(format) => console.log(format)}
-            loadingReport={false}
+            report={{
+              options: OPTIONS,
+              isLoading: loadingDownload,
+              onClickDownloadReport: onDownloadReport
+            }}
           />
         </ListPageLayout>
       </SidebarMainContainer>

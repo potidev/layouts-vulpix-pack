@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarLogo, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from "@potidev/react-vulpix-pack";
-import { LayoutDashboard } from "lucide-react";;
+import { LayoutDashboard } from "lucide-react";
 
 export const MySidebar = () => {
   const pathname = usePathname();

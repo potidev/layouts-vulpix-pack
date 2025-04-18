@@ -1,4 +1,4 @@
-import { PaginationControlProps, TableSearchProps } from "@/components";
+import { PaginationControlProps, TableDownloadReportProps, TableSearchProps } from "@/components";
 import { TableActiveFiltersProps } from "@/components/@table/TableActiveFilters";
 import { ColumnTitle } from "@potidev/utils-vulpix-pack";
 import { ColumnDef } from "@tanstack/react-table";
@@ -46,7 +46,8 @@ export interface TableLayoutProps<TData, TValue> {
    */ 
   filters?: TableActiveFiltersProps;
 
-
-  loadingReport?: boolean;
-  onDownloadReport?: (format: "xlsx" | "csv") => void;
+  /**
+   * 
+   */
+  report?: TableDownloadReportProps;
 }
