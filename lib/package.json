@@ -1,7 +1,7 @@
 {
   "name": "@potidev/layouts-vulpix-pack",
   "author": "Eduardo Costa",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Vulpix Pack - Layouts components",
   "main": "dist/index.ts",
   "sideEffects": false,
@@ -21,7 +21,6 @@
   "scripts": {
     "watch": "chokidar './src/**/*' -c 'npm run build'",
     "build": "node build.js",
-    "build-preview": "node scripts/build-preview.js",
     "prepare": "npm run build",
     "version": "node scripts/set-version.js",
     "copy-src-to-dist": "node scripts/copy-src-to-dist.js",
@@ -29,9 +28,8 @@
     "copy-package-json-to-dist-preview": "node scripts/copy-package-json-to-dist-preview.js",
     "clear-build": "rimraf dist",
     "clear-build-preview": "rimraf '../exemples/dashboard/src/@preview/@potidev/layouts-vulpix-pack'",
-    "preview": "cd ./preview/dashboard-01 && npm run dev",
-    "preview-watch": "chokidar './src/**/*' -c 'npm run build-preview'",
-    "preview-install": "cd ./preview/dashboard-01 && npm install --force"
+    "build-preview": "node scripts/build-preview.js",
+    "preview-watch": "chokidar './src/**/*' -c 'npm run build-preview'"
   },
   "license": "ISC",
   "dependencies": {

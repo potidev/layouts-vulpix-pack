@@ -25,6 +25,12 @@ export const MySidebar = () => {
                     <span>Table Layout Local Search</span>
                   </Link>
                 </SidebarMenuButton>
+                <SidebarMenuButton asChild isActive={"/table-layout-external-search" === pathname}>
+                  <Link href={"/table-layout-external-search"}>
+                    <LayoutDashboard />
+                    <span>Table Layout External Search</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
