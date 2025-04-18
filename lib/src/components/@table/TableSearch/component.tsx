@@ -24,7 +24,7 @@ export function TableSearch<TData>({
   isLoading,
   defaultValue,
 }: TableSearchProps<TData>) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue || "");
 
   return (
     <div className={cn("w-full flex flex-row gap-2", className)}>
