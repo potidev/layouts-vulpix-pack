@@ -30,7 +30,6 @@ export function TableSearch<TData>({
     <div className={cn("w-full flex flex-row gap-2", className)}>
       {searchType === "local" && searchId && (
         <Input
-          defaultValue={defaultValue}
           disabled={disabled}
           placeholder={placeholder}
           value={
@@ -48,7 +47,6 @@ export function TableSearch<TData>({
       )}
       {searchType === "external" && (
         <Input
-          defaultValue={defaultValue}
           disabled={disabled || isLoading}
           placeholder={placeholder}
           value={searchValue || value}
