@@ -8,15 +8,18 @@ import { BookingsMock } from "@/mocks/BookingsMock";
 import { FileSpreadsheet, Sheet } from "lucide-react";
 import { useState } from "react";
 import { delay } from "@potidev/utils-vulpix-pack";
+import { Booking } from "@/types/bookings";
 
 const OPTIONS: TableDownloadReportOption[] = [
   {
     id: "xlsx",
+    type: "xlsx",
     label: "Baixar em Excel",
     icon: <FileSpreadsheet />
   },
   {
     id: "csv",
+    type: "csv",
     label: "Baixar em CSV",
     icon: <Sheet />
   }
@@ -24,12 +27,19 @@ const OPTIONS: TableDownloadReportOption[] = [
 
 export default function TableLayoutPage() {
   const [loadingDownload, setLoadingDownload] = useState(false);
+  const [rowsLimit, setRowsLimit] = useState<number>(10);
+  const [bookings, setBookings] = useState<Booking[]>(BookingsMock);
 
   const onDownloadReport = async (option: TableDownloadReportOption) => {
     setLoadingDownload(true);
     console.log(option);
     await delay(2000);
     setLoadingDownload(false);
+  }
+  
+  const onSelectLimit = (limit: number) => {
+    setRowsLimit(limit);
+    setBookings(BookingsMock.slice(0, limit));
   }
 
   return (
@@ -47,12 +57,15 @@ export default function TableLayoutPage() {
             }}
             columnsTitle={columnsTitle}
             columns={getColumns({ refreshData: () => {} })}
-            data={BookingsMock}
+            data={bookings}
             tableId={tableId}
             pagination={{
               total: BookingsMock.length,
               current: 1,
-              limit: 100,
+              limit: rowsLimit,
+              limitOptions: [2, 5, 10],
+              onSelectLimit,
+              disabled: false,
             }}
             filters={{
               actives:[

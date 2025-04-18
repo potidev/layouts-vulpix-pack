@@ -5,6 +5,7 @@
   "scripts": {
     "exemple": "cd ./exemples/dashboard && npm run dev",
     "version": "cd ./lib && npm run version",
-    "publish": "cd ./lib && npm publish"
+    "publish": "cd ./lib && npm publish",
+    "watch": "cd ./lib && npm run preview-watch"
   }
 }

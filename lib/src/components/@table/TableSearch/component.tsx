@@ -55,10 +55,14 @@ export function TableSearch<TData>({
           onKeyDown={(e) => { if(e.key === 'Enter' && onSubmitSearch) onSubmitSearch(searchValue || value)}}
         />
       )}
-      <div className={cn("flex flex-row gap-2", rightSearchClassName)}>
-        {searchButton && <SearchButton onClick={() => onSubmitSearch(searchValue || value)} {...searchButtonProps} isLoading={isLoading} />}
-        {rightSearch}
-      </div>
+      {
+        searchButton || rightSearch && (
+          <div className={cn("flex flex-row gap-2", rightSearchClassName)}>
+            {searchButton && <SearchButton onClick={() => onSubmitSearch(searchValue || value)} {...searchButtonProps} isLoading={isLoading} />}
+            {rightSearch}
+          </div>
+        )
+      }
     </div>
   );
 };
