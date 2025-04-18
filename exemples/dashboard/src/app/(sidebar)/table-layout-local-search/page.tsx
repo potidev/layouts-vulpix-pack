@@ -26,7 +26,7 @@ export default function TableLayoutPage() {
             tableId={tableId}
             pagination={{
               total: BookingsMock.length,
-              active: 1,
+              current: 1,
               limit: 100,
             }}
             filters={{

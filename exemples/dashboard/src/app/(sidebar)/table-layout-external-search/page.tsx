@@ -43,8 +43,8 @@ export default function TableLayoutPage() {
             data={bookings}
             tableId={tableId}
             pagination={{
-              total: bookings.length,
-              active: 1,
+              total: 300,
+              current: 2,
               limit: 100,
             }}
             filters={{
