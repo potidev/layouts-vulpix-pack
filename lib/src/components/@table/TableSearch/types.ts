@@ -76,4 +76,9 @@ export interface TableSearchProps<TData> {
    * If true, disable the input and show the loading in button.
    */
   isLoading?: boolean;
+
+  /**
+   * Input default value
+   */
+  defaultValue?: string;
 };
