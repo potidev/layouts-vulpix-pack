@@ -31,6 +31,12 @@ export const MySidebar = () => {
                     <span>Table Layout External Search</span>
                   </Link>
                 </SidebarMenuButton>
+                <SidebarMenuButton asChild isActive={"/table-layout-with-report" === pathname}>
+                  <Link href={"/table-layout-with-report"}>
+                    <LayoutDashboard />
+                    <span>Table Layout With Report</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
