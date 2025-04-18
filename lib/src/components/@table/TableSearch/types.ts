@@ -70,7 +70,7 @@ export interface TableSearchProps<TData> {
   /**
    * Run when search button or enter press in input
    */
-  onSubmitSearch?: () => void;
+  onSubmitSearch?: (value: string) => void;
 
   /**
    * If true, disable the input and show the loading in button.

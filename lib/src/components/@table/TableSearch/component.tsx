@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { cn, Input } from "@potidev/react-vulpix-pack";
 import { TableSearchProps } from "./types";
@@ -10,8 +10,8 @@ export function TableSearch<TData>({
   className, 
   inputClassName, 
   placeholder, 
-  value, 
-  setValue, 
+  value: searchValue, 
+  setValue: setSearchValue, 
   rightSearch, 
   rightSearchClassName,
   searchId, 
@@ -23,6 +23,8 @@ export function TableSearch<TData>({
   disabled = false,
   isLoading,
 }: TableSearchProps<TData>) {
+  const [value, setValue] = useState("");
+
   return (
     <div className={cn("w-full flex flex-row gap-2", className)}>
       {searchType === "local" && searchId && (
@@ -46,14 +48,14 @@ export function TableSearch<TData>({
         <Input
           disabled={disabled || isLoading}
           placeholder={placeholder}
-          value={value}
-          onChange={(event) => setValue && setValue(event.target.value)}
+          value={searchValue || value}
+          onChange={(event) => setSearchValue ? setSearchValue(event.target.value) : setValue(event.target.value)}
           className={cn("md:max-w-sm w-full", inputClassName)}
-          onKeyDown={(e) => { if(e.key === 'Enter' && onSubmitSearch) onSubmitSearch()}}
+          onKeyDown={(e) => { if(e.key === 'Enter' && onSubmitSearch) onSubmitSearch(searchValue || value)}}
         />
       )}
       <div className={cn("flex flex-row gap-2", rightSearchClassName)}>
-        {searchButton && <SearchButton onClick={onSubmitSearch} {...searchButtonProps} isLoading={isLoading} />}
+        {searchButton && <SearchButton onClick={() => onSubmitSearch(searchValue || value)} {...searchButtonProps} isLoading={isLoading} />}
         {rightSearch}
       </div>
     </div>

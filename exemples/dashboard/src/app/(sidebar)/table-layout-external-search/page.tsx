@@ -10,11 +10,10 @@ import { Booking } from "@/types/bookings";
 import { delay } from "@potidev/utils-vulpix-pack";
 
 export default function TableLayoutPage() {
-  const [search, setSearch] = useState<string>("");
   const [bookings, setBookings] = useState<Booking[]>(BookingsMock);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmitSearch = async () => {
+  const onSubmitSearch = async (search: string) => {
     setIsLoading(true);
     const filterList = BookingsMock.filter(item => item.customer.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) || [];
     await delay(2000);
@@ -36,8 +35,6 @@ export default function TableLayoutPage() {
               searchId: "customer.name",
               placeholder: "Pesquisar pelo nome",
               searchButton: true,
-              setValue: setSearch,
-              value: search,
               isLoading,
               onSubmitSearch,
             }}
