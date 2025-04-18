@@ -38,6 +38,5 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "tailwindCSS.experimental.configFile": "src/styles/css/global.css",
   "tailwindCSS.classAttributes": ["class", "className", "ngClass", ".*ClassName", "contentClass", "wrapperClass"]
 }

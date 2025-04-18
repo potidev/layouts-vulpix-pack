@@ -3,6 +3,7 @@
 node_modules
 .cache
 dist
+dist-preview
 *storybook.log
 storybook-static
 scripts/local

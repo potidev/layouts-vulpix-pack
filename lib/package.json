@@ -1,0 +1,73 @@
+{
+  "name": "@potidev/layouts-vulpix-pack",
+  "author": "Eduardo Costa",
+  "version": "0.0.1",
+  "description": "React Vulpix Pack - Layouts components",
+  "main": "dist/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "build.js"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.ts",
+      "require": "./dist/index.ts"
+    }
+  },
+  "scripts": {
+    "watch": "chokidar './src/**/*' -c 'npm run build'",
+    "build": "node build.js",
+    "build-preview": "node scripts/build-preview.js",
+    "prepare": "npm run build",
+    "version": "node scripts/set-version.js",
+    "copy-src-to-dist": "node scripts/copy-src-to-dist.js",
+    "copy-src-to-dist-preview": "node scripts/copy-src-to-dist-preview.js",
+    "copy-package-json-to-dist-preview": "node scripts/copy-package-json-to-dist-preview.js",
+    "clear-build": "rimraf dist",
+    "clear-build-preview": "rimraf '../exemples/dashboard/src/@preview/@potidev/layouts-vulpix-pack'",
+    "preview": "cd ./preview/dashboard-01 && npm run dev",
+    "preview-watch": "chokidar './src/**/*' -c 'npm run build-preview'",
+    "preview-install": "cd ./preview/dashboard-01 && npm install --force"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "next": "15.2.4",
+    "@potidev/utils-vulpix-pack": "^1.0.11",
+    "@tanstack/react-table": "^8.21.3"
+  },
+  "devDependencies": {
+    "lucide-react": "^0.479.0",
+    "@potidev/react-vulpix-pack": "^0.4.32",
+    "@types/node": "^22.9.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "chalk": "^4.1.2",
+    "chokidar-cli": "^3.0.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-icons": "^5.3.0",
+    "react-is": "^18.3.1",
+    "rimraf": "^5.0.10",
+    "tscpaths": "^0.0.9",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "@potidev/react-vulpix-pack": "^0.4.32"
+  },
+  "keywords": [
+    "potidev",
+    "components",
+    "layout components",
+    "next.js",
+    "react",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/potidev/layouts-vulpix-pack.git"
+  }
+}
