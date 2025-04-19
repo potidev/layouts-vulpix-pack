@@ -28,7 +28,7 @@ export function TableSearch<TData>({
 
   return (
     <div className={cn("w-full flex flex-row gap-2", className)}>
-      {searchType === "local" && searchId && (
+      {searchType === "local" && searchId ? (
         <Input
           disabled={disabled}
           placeholder={placeholder}
@@ -44,8 +44,8 @@ export function TableSearch<TData>({
           }
           className={cn("md:max-w-sm w-full", inputClassName)}
         />
-      )}
-      {searchType === "external" && (
+      ) : null}
+      {searchType === "external" ? (
         <Input
           disabled={disabled || isLoading}
           placeholder={placeholder}
@@ -54,14 +54,14 @@ export function TableSearch<TData>({
           className={cn("md:max-w-sm w-full", inputClassName)}
           onKeyDown={(e) => { if(e.key === 'Enter' && onSubmitSearch) onSubmitSearch(searchValue || value)}}
         />
-      )}
+      ) : null}
       {
-        searchButton || rightSearch && (
+        searchButton || rightSearch ? (
           <div className={cn("flex flex-row gap-2", rightSearchClassName)}>
-            {searchButton && <SearchButton onClick={() => onSubmitSearch(searchValue || value)} {...searchButtonProps} isLoading={isLoading} />}
+            {searchButton ? <SearchButton onClick={() => onSubmitSearch && onSubmitSearch(searchValue || value)} {...searchButtonProps} isLoading={isLoading} /> : null}
             {rightSearch}
           </div>
-        )
+        ) : null
       }
     </div>
   );

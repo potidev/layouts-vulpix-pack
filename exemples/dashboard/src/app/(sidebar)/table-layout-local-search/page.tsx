@@ -2,7 +2,7 @@
 
 import { AppConstants } from "@/constants/AppConstants";
 import { ListPageLayout, TableLayout } from "@/@preview/@potidev/layouts-vulpix-pack";
-import { SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
+import { Button, SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
 import { columnsTitle, getColumns, tableId } from "./columns";
 import { BookingsMock } from "@/mocks/BookingsMock";
 
