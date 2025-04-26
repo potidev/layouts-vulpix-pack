@@ -25,4 +25,6 @@ export type ListPageLayoutProps = {
    * Container class name
    */
   className?: string;
+
+  onClickCreateButton?: () => void;
 }
