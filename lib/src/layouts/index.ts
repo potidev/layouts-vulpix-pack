@@ -6,3 +6,4 @@ export * from "./FormPageLayout";
 // Layouts
 export * from "./TableLayout";
 export * from "./FormLayout";
+export * from "./FormSectionLayout";
