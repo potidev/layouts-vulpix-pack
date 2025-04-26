@@ -42,6 +42,21 @@ export const MySidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarSeparator />
+        <SidebarGroup>
+          <SidebarGroupLabel>Form Layout</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={"/form-page-layout" === pathname}>
+                  <Link href={"/form-page-layout"}>
+                    <LayoutDashboard />
+                    <span>Form Page Layout</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   )
