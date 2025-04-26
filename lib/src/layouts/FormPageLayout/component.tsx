@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { FormPageLayoutProps } from "./types";
 
 export const FormPageLayout = ({ 
+  className,
   children, 
   title, 
   description, 
@@ -24,7 +25,7 @@ export const FormPageLayout = ({
   const router = useRouter();
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className={cn("flex flex-col gap-6", className)}>
       <div className="flex flex-row justify-between items-center gap-2 w-full">
         <div className={cn("flex flex-row gap-2", !description ? "items-center" : undefined)}>
           {

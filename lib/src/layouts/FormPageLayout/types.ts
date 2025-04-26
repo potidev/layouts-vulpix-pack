@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
 export type FormPageLayoutProps = {
+  className?: string;
   title: string;
   description?: string;
   children: ReactNode;
