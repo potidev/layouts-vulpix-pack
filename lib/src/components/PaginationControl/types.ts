@@ -1,8 +1,19 @@
+import { ReactNode } from "react";
+
+export type PaginationControlVariant = "labels" | "minimalist";
+
 export type PaginationControlProps = {
   /**
    * Container className
    */
   className?: string;
+
+  /**
+   * Variant do pagination control
+   * "labels" (padrão): Exibe a paginação classica com textos de "Próximo" e "Anterior".
+   * "minimalist": Exibe uma paginação baseada em icones sem exibir os números
+   */
+  variant?: PaginationControlVariant;
 
   /**
    * Select trigger className
@@ -25,26 +36,12 @@ export type PaginationControlProps = {
   current: number;
 
   /**
-   * execute when click in a number of pagination
+   * execute when click any navigation button
    * @param page clicked page number
-   * @param active active page number
+   * @param activePage active page number
    * @returns 
    */
-  onClickPage?: (page: number, active?: number) => void;
-
-  /**
-   * execute when click in next button of pagination
-   * @param nextPage next page number
-   * @returns 
-   */
-  onClickNext?: (nextPage: number) => void;
-
-  /**
-   * execute when click in previous button of pagination
-   * @param nextPage previous page number
-   * @returns 
-   */
-  onClickPrevious?: (previous: number) => void;
+  onChangePage?: (page: number, activePage?: number) => void;
   
   key?: string;
   
@@ -77,4 +74,10 @@ export type PaginationControlProps = {
    * @returns 
    */
   onSelectLimit?: (selectedLimit: number) => void;
+
+  showStartEndButtons?: boolean;
+
+  showPageCounter?: boolean;
+
+  renderPageCounter?: (current: number, total: number) => ReactNode; 
 }

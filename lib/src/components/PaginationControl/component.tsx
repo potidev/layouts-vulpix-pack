@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { cn, Label, Pagination, PaginationButton, PaginationContent, PaginationItem, PaginationNextButton, PaginationPreviousButton, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@potidev/react-vulpix-pack";
 import { PaginationControlProps } from "./types";
+import { ChevronsLeft, ChevronsRight } from "lucide-react";
 
 export const PaginationControl = ({
   className,
@@ -10,15 +11,17 @@ export const PaginationControl = ({
   limit,
   total,
   current = 0,
-  onClickPage,
-  onClickNext,
-  onClickPrevious,
+  onChangePage,
   key = "0",
   hiddenNextPrevWhenDisable = false,
   limitOptions = [],
   limitOptionsLabel = "Linhas por página",
   disabled = false,
   onSelectLimit,
+  variant = "labels",
+  showStartEndButtons = false,
+  renderPageCounter = (current, total) => (<p className="text-sm">Página {current} de {total}</p>),
+  showPageCounter = false,
 }: PaginationControlProps) => {
   const [selectedLimit, setSelectedLimit] = useState<number>(limit);
 
@@ -72,34 +75,81 @@ export const PaginationControl = ({
           </section>
         )
       }
-      <Pagination className="lg:w-fit lg:mx-0">
-        <PaginationContent className="flex-wrap">
-          {showPrev === true && (
-            <PaginationItem>
-              <PaginationPreviousButton className="cursor-pointer" disabled={current === 1 || disabled} onClick={() => onClickPrevious && onClickPrevious(current - 1)} />
-            </PaginationItem>
-          )}
-          <div className="flex flex-1 flex-row items-center gap-1 flex-wrap justify-center">
-            {Array.from({ length: numberOfPages }).map((_, index) => (
-              <PaginationItem key={`PAGINATION_ITEM_${key}_${index}`}>
-                <PaginationButton
-                  className="cursor-pointer"
-                  disabled={disabled}
-                  isActive={current === index + 1}
-                  onClick={() => onClickPage && onClickPage(index + 1, current)}
-                >
-                  {index + 1}
-                </PaginationButton>
-              </PaginationItem>
-            ))}
-          </div>
-          {showNext === true && (
-            <PaginationItem>
-              <PaginationNextButton className="cursor-pointer" disabled={current === numberOfPages || disabled} onClick={() => onClickNext && onClickNext(current + 1)} />
-            </PaginationItem>
-          )}
-        </PaginationContent>
-      </Pagination>
+      <div className="flex flex-col md:flex-row gap-4 items-center">
+        {showPageCounter === true ? renderPageCounter(current, total) : null}
+        <Pagination className="lg:w-fit lg:mx-0">
+          <PaginationContent className="flex-wrap">
+            {showPrev === true && (
+              <>
+                {showStartEndButtons ? (
+                  <PaginationItem>
+                    <PaginationPreviousButton
+                      size={"icon"}
+                      variant={variant === "minimalist" ? "outline" : undefined}
+                      disabled={current === 1 || disabled}
+                      onClick={() => onChangePage && onChangePage(1, current)}
+                      icon={() => <ChevronsLeft />}
+                    />
+                  </PaginationItem>
+                ) : null}
+                <PaginationItem>
+                  <PaginationPreviousButton
+                    size={variant === "minimalist" ? "icon" : "default"}
+                    variant={variant === "minimalist" ? "outline" : undefined}
+                    disabled={current === 1 || disabled}
+                    onClick={() => onChangePage && onChangePage(current - 1, current)}
+                    label={variant === "minimalist" ? undefined : "Anterior"}
+                  />
+                </PaginationItem>
+              </>
+            )}
+            {
+              variant === "minimalist" ? (
+                null
+              ) : (
+                <div className="flex flex-1 flex-row items-center gap-1 flex-wrap justify-center">
+                  {Array.from({ length: numberOfPages }).map((_, index) => (
+                    <PaginationItem key={`PAGINATION_ITEM_${key}_${index}`}>
+                      <PaginationButton
+                        className="cursor-pointer"
+                        disabled={disabled}
+                        isActive={current === index + 1}
+                        onClick={() => onChangePage && onChangePage(index + 1, current)}
+                      >
+                        {index + 1}
+                      </PaginationButton>
+                    </PaginationItem>
+                  ))}
+                </div>
+              )
+            }
+            {showNext === true && (
+              <>
+                <PaginationItem>
+                  <PaginationNextButton
+                    size={variant === "minimalist" ? "icon" : "default"}
+                    variant={variant === "minimalist" ? "outline" : undefined}
+                    disabled={current === numberOfPages || disabled}
+                    onClick={() => onChangePage && onChangePage(current + 1, current)}
+                    label={variant === "minimalist" ? undefined : "Próximo"}
+                  />
+                </PaginationItem>
+                {showStartEndButtons ? (
+                  <PaginationItem>
+                    <PaginationNextButton
+                      size={"icon"}
+                      variant={variant === "minimalist" ? "outline" : undefined}
+                      disabled={current === numberOfPages || disabled}
+                      onClick={() => onChangePage && onChangePage(numberOfPages, current)}
+                      icon={() => <ChevronsRight />}
+                    />
+                  </PaginationItem>
+                ) : null}
+              </>
+            )}
+          </PaginationContent>
+        </Pagination>
+      </div>
     </div>
   )
 }

@@ -66,6 +66,9 @@ export default function TableLayoutPage() {
               limitOptions: [2, 5, 10],
               onSelectLimit,
               disabled: false,
+              variant: "minimalist",
+              showStartEndButtons: true,
+              showPageCounter: true,
             }}
             filters={{
               actives:[
