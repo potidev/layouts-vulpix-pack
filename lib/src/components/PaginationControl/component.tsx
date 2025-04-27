@@ -20,7 +20,7 @@ export const PaginationControl = ({
   onSelectLimit,
   variant = "labels",
   showStartEndButtons = false,
-  renderPageCounter = (current, numberOfPages) => (<p className="text-sm">Página {current} de {total}</p>),
+  renderPageCounter = (localCurrent, localNumberOfPages) => (<p className="text-sm">Página {localCurrent} de {localNumberOfPages}</p>),
   showPageCounter = false,
 }: PaginationControlProps) => {
   const [selectedLimit, setSelectedLimit] = useState<number>(limit);
