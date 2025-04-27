@@ -14,15 +14,7 @@ import {
 } from "@tanstack/react-table";
 
 import {
-  Badge,
-  Button,
-  Card,
   cn,
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
   Table,
   TableBody,
   TableCell,
@@ -30,14 +22,6 @@ import {
   TableHeader,
   TableRow,
 } from "@potidev/react-vulpix-pack";
-
-import {
-  ChevronDown,
-  FileSpreadsheetIcon,
-  LoaderCircleIcon,
-  SheetIcon,
-  X,
-} from "lucide-react";
 
 import { ColumnUtils, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
 
@@ -118,7 +102,7 @@ export function TableLayout<TData, TValue>({
           
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
             {columnsTitle && <TableColumnsControl table={table} columnsTitle={columnsTitle} />}
-            {pagination && pagination.total && <TableTotal total={pagination.total} />}
+            {pagination && pagination.total !== undefined && pagination.total !== 0 ? <TableTotal total={pagination.total} /> : null}
           </div>
         </div>
 
