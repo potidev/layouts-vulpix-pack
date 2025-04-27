@@ -76,7 +76,7 @@ export const PaginationControl = ({
         )
       }
       <div className="flex flex-col md:flex-row gap-4 items-center">
-        {showPageCounter === true ? renderPageCounter(current, numberOfPages) : null}
+        {showPageCounter === true && numberOfPages !== 0 ? renderPageCounter(current, numberOfPages) : null}
         <Pagination className="lg:w-fit lg:mx-0">
           <PaginationContent className="flex-wrap">
             {showPrev === true && (
