@@ -79,5 +79,5 @@ export type PaginationControlProps = {
 
   showPageCounter?: boolean;
 
-  renderPageCounter?: (current: number, total: number) => ReactNode; 
+  renderPageCounter?: (current: number, numberOfPages: number) => ReactNode; 
 }
