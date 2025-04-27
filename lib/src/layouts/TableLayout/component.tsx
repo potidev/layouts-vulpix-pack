@@ -115,8 +115,9 @@ export function TableLayout<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
+                  const columnTitle = columnsTitle.find((col) => col.accessorKey === header.id);
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className={columnTitle?.className}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
