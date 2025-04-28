@@ -6,6 +6,7 @@
     "exemple": "cd ./exemples/dashboard && npm run dev",
     "version": "cd ./lib && npm run version",
     "publish": "cd ./lib && npm publish",
-    "watch": "cd ./lib && npm run preview-watch"
+    "watch": "cd ./lib && npm run preview-watch",
+    "install": "cd ./lib && npm install && cd ../exemples/dashboard && npm install"
   }
 }

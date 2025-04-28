@@ -3,11 +3,11 @@
 import { AppConstants } from "@/constants/AppConstants";
 import { ListPageLayout, TableDownloadReportOption, TableLayout } from "@/@preview/@potidev/layouts-vulpix-pack";
 import { SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
-import { columnsTitle, getColumns, tableId } from "./columns";
+import { getColumnsTitle, getColumns, tableId } from "./columns";
 import { BookingsMock } from "@/mocks/BookingsMock";
 import { FileSpreadsheet, Sheet } from "lucide-react";
-import { useState } from "react";
-import { delay } from "@potidev/utils-vulpix-pack";
+import { useEffect, useMemo, useState } from "react";
+import { ColumnTitle, delay } from "@potidev/utils-vulpix-pack";
 import { Booking } from "@/types/bookings";
 
 const OPTIONS: TableDownloadReportOption[] = [
@@ -29,6 +29,7 @@ export default function TableLayoutPage() {
   const [loadingDownload, setLoadingDownload] = useState(false);
   const [rowsLimit, setRowsLimit] = useState<number>(10);
   const [bookings, setBookings] = useState<Booking[]>(BookingsMock);
+  const [columnsTitle, setColumnsTitle] = useState<ColumnTitle<any>[]>([]);
 
   const onDownloadReport = async (option: TableDownloadReportOption) => {
     setLoadingDownload(true);
@@ -40,6 +41,24 @@ export default function TableLayoutPage() {
   const onSelectLimit = (limit: number) => {
     setRowsLimit(limit);
     setBookings(BookingsMock.slice(0, limit));
+  }
+
+  useEffect(() => {
+    requestColumnsTitle();
+  }, []);
+
+  const requestColumnsTitle = async () => {
+    setColumnsTitle(getColumnsTitle());
+    await delay(2000);
+    const teste = getColumnsTitle([
+      {
+        accessorKey: "teste",
+        title: "Teste",
+        defaultVisibility: false,
+      }
+    ]);
+    console.log(teste);
+    setColumnsTitle(teste);
   }
 
   return (
@@ -56,7 +75,7 @@ export default function TableLayoutPage() {
               placeholder: "Pesquisar pelo nome"
             }}
             columnsTitle={columnsTitle}
-            columns={getColumns({ refreshData: () => {} })}
+            columns={getColumns({ refreshData: () => {}, columnsTitle })}
             data={bookings}
             tableId={tableId}
             pagination={{

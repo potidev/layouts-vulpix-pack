@@ -13,7 +13,7 @@ import { BookingStatusLabel } from "@/constants/BookingStatusConstants";
 
 export const tableId = "list-bookings";
 
-export const columnsTitle: ColumnTitle<Booking>[] = [
+export const getColumnsTitle = (extraColumns: ColumnTitle<any>[] = []): ColumnTitle<Booking>[] => [
   {
     accessorKey: "check",
     title: "Check",
@@ -40,13 +40,15 @@ export const columnsTitle: ColumnTitle<Booking>[] = [
     title: "Status",
     defaultVisibility: true,
   },
+  ...extraColumns,
 ]
 
 type GetColumnsParams = {
+  columnsTitle: ColumnTitle<Booking>[];
   refreshData: () => void;
 }
 
-export const getColumns = ({ refreshData }: GetColumnsParams): ColumnDef<Booking>[] => {
+export const getColumns = ({ refreshData, columnsTitle }: GetColumnsParams): ColumnDef<Booking>[] => {
   return [
     {
       accessorKey: "check",
