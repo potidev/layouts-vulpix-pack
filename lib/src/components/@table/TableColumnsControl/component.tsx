@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, cn, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, ScrollArea } from "@potidev/react-vulpix-pack";
+import { Button, cn, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger, ScrollArea } from "@potidev/react-vulpix-pack";
 import { ChevronDown } from "lucide-react";
 import { TableColumnsControlProps } from "./types";
 import { ColumnUtils } from "@potidev/utils-vulpix-pack";
@@ -26,18 +26,23 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
               (column) => column.getCanHide() && column.id !== "actions"
             )
             .map((column) => {
+              const columnTitleString = ColumnUtils.getColumnTitleByAccessorKeyString<TData>(columnsTitle, column.id);
+              const columnTitle = columnsTitle.find((columnT) => columnT.accessorKey === column.id);
               return (
-                <DropdownMenuCheckboxItem
-                  key={column.id}
-                  checked={column.getIsVisible()}
-                  onCheckedChange={(value) =>
-                    column.toggleVisibility(!!value)
-                  }
-                >
-                  {columnsTitle
-                    ? ColumnUtils.getColumnTitleByAccessorKeyString<TData>(columnsTitle, column.id)
-                    : column.id}
-                </DropdownMenuCheckboxItem>
+                <React.Fragment key={column.id}>
+                  {columnTitle && columnTitle.upLabel ? <DropdownMenuLabel className="mt-2">{columnTitle.upLabel}</DropdownMenuLabel> : null}
+                  <DropdownMenuCheckboxItem
+                    checked={column.getIsVisible()}
+                    onCheckedChange={(value) =>
+                      column.toggleVisibility(!!value)
+                    }
+                  >
+                    {columnsTitle
+                      ? columnTitleString
+                      : column.id}
+                  </DropdownMenuCheckboxItem>
+                  {columnTitle && columnTitle.downLabel ? <DropdownMenuLabel className="mt-2">{columnTitle.downLabel}</DropdownMenuLabel> : null}
+                </React.Fragment>
               );
             })}
         </ScrollArea>

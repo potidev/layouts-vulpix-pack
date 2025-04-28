@@ -1,7 +1,7 @@
 {
   "name": "@potidev/layouts-vulpix-pack",
   "author": "Eduardo Costa",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "React Vulpix Pack - Layouts components",
   "main": "dist/index.ts",
   "sideEffects": false,
@@ -34,7 +34,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "15.2.4",
-    "@potidev/utils-vulpix-pack": "^1.0.14",
+    "@potidev/utils-vulpix-pack": "^1.0.15",
     "@tanstack/react-table": "^8.21.3"
   },
   "devDependencies": {

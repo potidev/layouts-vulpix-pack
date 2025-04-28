@@ -52,7 +52,8 @@ export default function TableLayoutPage() {
   const requestColumnsTitle = async () => {
     setColumnsTitle(getColumnsTitle());
     await delay(2000);
-    const newExtraColumns = [{
+    const newExtraColumns: ColumnTitle<any>[] = [{
+      upLabel: "Extra Columns",
       accessorKey: "teste-1",
       title: "Teste 1",
       defaultVisibility: false,
@@ -71,6 +72,7 @@ export default function TableLayoutPage() {
       accessorKey: "teste-4",
       title: "Teste 4",
       defaultVisibility: false,
+      downLabel: "Extra Columns 2",
     }]
     setExtraColumns(newExtraColumns)
     const teste = getColumnsTitle(newExtraColumns);

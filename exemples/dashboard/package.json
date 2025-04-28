@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@potidev/react-vulpix-pack": "^0.4.44",
-    "@potidev/utils-vulpix-pack": "^1.0.14",
+    "@potidev/utils-vulpix-pack": "^1.0.15",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
