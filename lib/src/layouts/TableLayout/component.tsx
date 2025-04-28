@@ -42,15 +42,8 @@ export function TableLayout<TData, TValue>({
   emptyListMessage = "Sem resultados",
 }: TableLayoutProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>(
-      columnsTitle
-        ? ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle)
-        : {}
-    );
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>(columnsTitle ? ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle) : {});
 
   const table = useReactTable({
     data,
@@ -61,8 +54,7 @@ export function TableLayout<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: (updater) => {
-      const newVisibility =
-        typeof updater === "function" ? updater(columnVisibility) : updater;
+      const newVisibility = typeof updater === "function" ? updater(columnVisibility) : updater;
       tableId && ColumnVisibilityStorage.save(tableId, newVisibility);
       return setColumnVisibility(updater);
     },
@@ -76,6 +68,10 @@ export function TableLayout<TData, TValue>({
   React.useEffect(() => {
     handleColumnVisibility();
   }, []);
+
+  React.useEffect(() => {
+    setColumnVisibility(ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle));
+  }, [columnsTitle])
 
   const handleColumnVisibility = () => {
     if (tableId) {
@@ -101,12 +97,12 @@ export function TableLayout<TData, TValue>({
           )}
           
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
-            {columnsTitle && <TableColumnsControl table={table} columnsTitle={columnsTitle} />}
+            {columnsTitle ? <TableColumnsControl table={table} columnsTitle={columnsTitle} /> : null}
             {pagination && pagination.total !== undefined && pagination.total !== 0 ? <TableTotal total={pagination.total} /> : null}
           </div>
         </div>
 
-        {filters && <TableActiveFilters {...filters} className={cn("ml-0.5", filters.className)} />}
+        {filters ? <TableActiveFilters {...filters} className={cn("ml-0.5", filters.className)} /> : null}
       </div>
 
       <TableLimit className="rounded-md border">
