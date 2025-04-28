@@ -72,8 +72,37 @@ export default function TableLayoutPage() {
       accessorKey: "teste-4",
       title: "Teste 4",
       defaultVisibility: false,
-      downLabel: "Extra Columns 2",
-    }]
+    },
+    {
+      accessorKey: "teste-5",
+      title: "Teste 5",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-6",
+      title: "Teste 6",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-7",
+      title: "Teste 7",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-8",
+      title: "Teste 8",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-9",
+      title: "Teste 9",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-10",
+      title: "Teste 10",
+      defaultVisibility: false,
+    },]
     setExtraColumns(newExtraColumns)
     const teste = getColumnsTitle(newExtraColumns);
     setColumnsTitle(teste);
@@ -118,6 +147,11 @@ export default function TableLayoutPage() {
               options: OPTIONS,
               isLoading: loadingDownload,
               onClickDownloadReport: onDownloadReport
+            }}
+            tableColumnsControlProps={{
+              scrollAreaProps: {
+                className: "h-96",
+              }
             }}
           />
         </ListPageLayout>
