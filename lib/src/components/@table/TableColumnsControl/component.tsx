@@ -25,12 +25,12 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
             .filter(
               (column) => column.getCanHide() && column.id !== "actions"
             )
-            .map((column) => {
+            .map((column, index) => {
               const columnTitleString = ColumnUtils.getColumnTitleByAccessorKeyString<TData>(columnsTitle, column.id);
               const columnTitle = columnsTitle.find((columnT) => columnT.accessorKey === column.id);
               return (
                 <React.Fragment key={column.id}>
-                  {columnTitle && columnTitle.upLabel ? <DropdownMenuLabel className="mt-2">{columnTitle.upLabel}</DropdownMenuLabel> : null}
+                  {columnTitle && columnTitle.upLabel ? <DropdownMenuLabel className={cn(index === 0 ? "" : "mt-2")}>{columnTitle.upLabel}</DropdownMenuLabel> : null}
                   <DropdownMenuCheckboxItem
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) =>
