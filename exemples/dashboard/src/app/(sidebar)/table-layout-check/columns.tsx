@@ -46,10 +46,11 @@ export const getColumnsTitle = (extraColumns: ColumnTitle<any>[] = []): ColumnTi
 type GetColumnsParams = {
   columnsTitle: ColumnTitle<Booking>[];
   refreshData: () => void;
+  extraColumns: ColumnTitle<any>[];
 }
 
-export const getColumns = ({ refreshData, columnsTitle }: GetColumnsParams): ColumnDef<Booking>[] => {
-  return [
+export const getColumns = ({ refreshData, columnsTitle, extraColumns }: GetColumnsParams): ColumnDef<Booking>[] => {
+  const defaultColumns: ColumnDef<Booking>[] = [
     {
       accessorKey: "check",
       id: "check",
@@ -143,4 +144,10 @@ export const getColumns = ({ refreshData, columnsTitle }: GetColumnsParams): Col
       },
     },
   ]
+
+  const newColumns = {
+    
+  }
+
+  return defaultColumns;
 };

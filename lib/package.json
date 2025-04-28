@@ -1,7 +1,7 @@
 {
   "name": "@potidev/layouts-vulpix-pack",
   "author": "Eduardo Costa",
-  "version": "0.0.27",
+  "version": "0.0.29",
   "description": "React Vulpix Pack - Layouts components",
   "main": "dist/index.ts",
   "sideEffects": false,
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "lucide-react": "^0.479.0",
-    "@potidev/react-vulpix-pack": "^0.4.43",
+    "@potidev/react-vulpix-pack": "^0.4.44",
     "@types/node": "^22.9.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",

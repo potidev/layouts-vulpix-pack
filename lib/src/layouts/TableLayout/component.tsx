@@ -40,6 +40,7 @@ export function TableLayout<TData, TValue>({
   report,
   pagination,
   emptyListMessage = "Sem resultados",
+  tableColumnsControlProps,
 }: TableLayoutProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -70,7 +71,7 @@ export function TableLayout<TData, TValue>({
   }, []);
 
   React.useEffect(() => {
-    setColumnVisibility(ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle));
+    setColumnVisibility(columnsTitle ? ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle) : {});
   }, [columnsTitle])
 
   const handleColumnVisibility = () => {
@@ -97,7 +98,7 @@ export function TableLayout<TData, TValue>({
           )}
           
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
-            {columnsTitle ? <TableColumnsControl table={table} columnsTitle={columnsTitle} /> : null}
+            {columnsTitle ? <TableColumnsControl table={table} columnsTitle={columnsTitle} {...tableColumnsControlProps} /> : null}
             {pagination && pagination.total !== undefined && pagination.total !== 0 ? <TableTotal total={pagination.total} /> : null}
           </div>
         </div>
@@ -111,7 +112,7 @@ export function TableLayout<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
-                  const columnTitle = columnsTitle.find((col) => col.accessorKey === header.id);
+                  const columnTitle = columnsTitle?.find((col) => col.accessorKey === header.id);
                   return (
                     <TableHead key={header.id} className={columnTitle?.className}>
                       {header.isPlaceholder

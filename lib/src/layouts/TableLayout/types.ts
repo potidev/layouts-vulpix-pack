@@ -1,4 +1,4 @@
-import { PaginationControlProps, TableDownloadReportProps, TableSearchProps } from "@/components";
+import { PaginationControlProps, TableColumnsControlProps, TableDownloadReportProps, TableSearchProps } from "@/components";
 import { TableActiveFiltersProps } from "@/components/@table/TableActiveFilters";
 import { ColumnTitle } from "@potidev/utils-vulpix-pack";
 import { ColumnDef } from "@tanstack/react-table";
@@ -50,4 +50,6 @@ export interface TableLayoutProps<TData, TValue> {
    * 
    */
   report?: TableDownloadReportProps;
+
+  tableColumnsControlProps?: Omit<TableColumnsControlProps<TData>, "table" | "columnsTitle">;
 }

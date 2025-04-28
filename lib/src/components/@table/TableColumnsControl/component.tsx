@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { TableColumnsControlProps } from "./types";
 import { ColumnUtils } from "@potidev/utils-vulpix-pack";
 
-export function TableColumnsControl<TData>({ className, table, columnsTitle, scrollAreaClassName, contentClassName }: TableColumnsControlProps<TData>) {
+export function TableColumnsControl<TData>({ className, table, columnsTitle, contentClassName, scrollAreaProps }: TableColumnsControlProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={cn(className)} asChild>
@@ -19,7 +19,7 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, scr
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={contentClassName}>
-        <ScrollArea className={cn("h-96", scrollAreaClassName)}>
+        <ScrollArea {...scrollAreaProps} className={cn("h-96", scrollAreaProps.className)}>
           {table
             .getAllColumns()
             .filter(
