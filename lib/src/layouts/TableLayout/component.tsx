@@ -23,7 +23,7 @@ import {
   TableRow,
 } from "@potidev/react-vulpix-pack";
 
-import { ColumnUtils, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
+import { ColumnTitle, ColumnUtils, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
 
 import { TableLimit, PaginationControl, TableSearch, TableColumnsControl, TableTotal, TableDownloadReport } from "@/components";
 
@@ -44,7 +44,7 @@ export function TableLayout<TData, TValue>({
 }: TableLayoutProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>(columnsTitle ? ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle) : {});
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>();
 
   const table = useReactTable({
     data,
@@ -67,19 +67,28 @@ export function TableLayout<TData, TValue>({
   });
 
   React.useEffect(() => {
-    handleColumnVisibility();
-  }, []);
+    handleColumnVisibility(columnsTitle);
+  }, [columnsTitle]);
 
-  React.useEffect(() => {
-    setColumnVisibility(columnsTitle ? ColumnUtils.getDefaultVisibilityState<TData>(columnsTitle) : {});
-  }, [columnsTitle])
-
-  const handleColumnVisibility = () => {
+  const handleColumnVisibility = (newColumns: ColumnTitle<TData>[]) => {
     if (tableId) {
-      const columnVisibilityStorage = ColumnVisibilityStorage.read(tableId);
-
+      const columnVisibilityStorage = ColumnVisibilityStorage.read(tableId) || {};
       if (columnVisibilityStorage) {
-        table.setColumnVisibility(columnVisibilityStorage);
+        let newVisibilitiesToStorage: VisibilityState = {};
+
+        for (let index = 0; index < newColumns.length; index++) {
+          const item = newColumns[index];
+          const key = item.accessorKey.toString();
+          if (columnVisibilityStorage[key] === undefined) {
+            newVisibilitiesToStorage[key] = item.defaultVisibility;
+          } else {
+            newVisibilitiesToStorage[key] = columnVisibilityStorage[key];
+          }
+        }
+
+        const finalVisibility = { ...columnVisibilityStorage, ...newVisibilitiesToStorage };
+
+        table.setColumnVisibility(finalVisibility);
         return;
       }
     }
@@ -96,7 +105,7 @@ export function TableLayout<TData, TValue>({
               <TableDownloadReport {...report} />
             </div>
           )}
-          
+
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
             {columnsTitle ? <TableColumnsControl table={table} columnsTitle={columnsTitle} {...tableColumnsControlProps} /> : null}
             {pagination && pagination.total !== undefined && pagination.total !== 0 ? <TableTotal total={pagination.total} /> : null}

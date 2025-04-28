@@ -30,6 +30,7 @@ export default function TableLayoutPage() {
   const [rowsLimit, setRowsLimit] = useState<number>(10);
   const [bookings, setBookings] = useState<Booking[]>(BookingsMock);
   const [columnsTitle, setColumnsTitle] = useState<ColumnTitle<any>[]>([]);
+  const [extraColumns, setExtraColumns] = useState<ColumnTitle<any>[]>([]);
 
   const onDownloadReport = async (option: TableDownloadReportOption) => {
     setLoadingDownload(true);
@@ -47,17 +48,32 @@ export default function TableLayoutPage() {
     requestColumnsTitle();
   }, []);
 
+
   const requestColumnsTitle = async () => {
     setColumnsTitle(getColumnsTitle());
     await delay(2000);
-    const teste = getColumnsTitle([
-      {
-        accessorKey: "teste",
-        title: "Teste",
-        defaultVisibility: false,
-      }
-    ]);
-    console.log(teste);
+    const newExtraColumns = [{
+      accessorKey: "teste-1",
+      title: "Teste 1",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-2",
+      title: "Teste 2",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-3",
+      title: "Teste 3",
+      defaultVisibility: false,
+    },
+    {
+      accessorKey: "teste-4",
+      title: "Teste 4",
+      defaultVisibility: false,
+    }]
+    setExtraColumns(newExtraColumns)
+    const teste = getColumnsTitle(newExtraColumns);
     setColumnsTitle(teste);
   }
 
@@ -75,7 +91,7 @@ export default function TableLayoutPage() {
               placeholder: "Pesquisar pelo nome"
             }}
             columnsTitle={columnsTitle}
-            columns={getColumns({ refreshData: () => {}, columnsTitle })}
+            columns={getColumns({ refreshData: () => {}, columnsTitle, extraColumns })}
             data={bookings}
             tableId={tableId}
             pagination={{

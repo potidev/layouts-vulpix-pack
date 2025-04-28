@@ -19,7 +19,7 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={contentClassName}>
-        <ScrollArea {...scrollAreaProps} className={cn("h-96", scrollAreaProps?.className)}>
+        <ScrollArea {...scrollAreaProps} className={cn("max-h-96", scrollAreaProps?.className)}>
           {table
             .getAllColumns()
             .filter(

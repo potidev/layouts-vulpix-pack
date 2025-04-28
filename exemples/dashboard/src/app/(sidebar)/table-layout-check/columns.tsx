@@ -145,8 +145,19 @@ export const getColumns = ({ refreshData, columnsTitle, extraColumns }: GetColum
     },
   ]
 
-  const newColumns = {
-    
+  const newExtraColumns = extraColumns?.map((obj): ColumnDef<Booking> => {
+    return {
+      id: obj.accessorKey.toString(),
+      accessorKey: obj.accessorKey.toString(),
+      header: ColumnUtils.getColumnTitleByAccessorKey<Booking>(columnsTitle, obj.accessorKey.toString()),
+      cell: ({ row }) => {
+        return obj.title;
+      },
+    }
+  })
+
+  if(extraColumns) {
+    defaultColumns.push(...newExtraColumns);
   }
 
   return defaultColumns;
