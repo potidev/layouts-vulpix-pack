@@ -23,7 +23,7 @@ import {
   TableRow,
 } from "@potidev/react-vulpix-pack";
 
-import { ColumnTitle, ColumnUtils, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
+import { ColumnTitle, ColumnVisibilityStorage } from "@potidev/utils-vulpix-pack";
 
 import { TableLimit, PaginationControl, TableSearch, TableColumnsControl, TableTotal, TableDownloadReport } from "@/components";
 

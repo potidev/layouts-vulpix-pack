@@ -8,4 +8,5 @@ export type TableColumnsControlProps<TData> = {
   columnsTitle?: ColumnTitle<TData>[];
   contentClassName?: string;
   scrollAreaProps?: Omit<ScrollAreaProps, "children">;
+  label?: string;
 };

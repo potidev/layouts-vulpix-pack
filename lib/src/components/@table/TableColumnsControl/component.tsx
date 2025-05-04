@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { TableColumnsControlProps } from "./types";
 import { ColumnUtils } from "@potidev/utils-vulpix-pack";
 
-export function TableColumnsControl<TData>({ className, table, columnsTitle, contentClassName, scrollAreaProps }: TableColumnsControlProps<TData>) {
+export function TableColumnsControl<TData>({ className, table, columnsTitle, contentClassName, scrollAreaProps, label = "Campos" }: TableColumnsControlProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={cn(className)} asChild>
@@ -14,7 +14,7 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
           className="justify-between ml-auto md:w-fit md:justify-center"
           fullWidth
         >
-          Campos
+          {label}
           <ChevronDown />
         </Button>
       </DropdownMenuTrigger>

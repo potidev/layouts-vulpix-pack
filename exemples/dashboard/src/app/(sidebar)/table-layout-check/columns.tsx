@@ -52,6 +52,7 @@ type GetColumnsParams = {
 export const getColumns = ({ refreshData, columnsTitle, extraColumns }: GetColumnsParams): ColumnDef<Booking>[] => {
   const defaultColumns: ColumnDef<Booking>[] = [
     {
+      enableHiding: false,
       accessorKey: "check",
       id: "check",
       header: ({ column }) => ColumnUtils.getColumnTitleByAccessorKey<Booking>(columnsTitle, "check"),

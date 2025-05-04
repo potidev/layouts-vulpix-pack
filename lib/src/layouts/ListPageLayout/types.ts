@@ -27,4 +27,14 @@ export type ListPageLayoutProps = {
   className?: string;
 
   onClickCreateButton?: () => void;
+
+  withBackButton?: boolean;
+
+  onClickBackButton?: () => void;
+
+  description?: string;
+
+  extraButtons?: ReactNode;
+
+  buttonsContainerClassName?: string;
 }

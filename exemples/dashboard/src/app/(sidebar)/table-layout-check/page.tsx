@@ -2,7 +2,7 @@
 
 import { AppConstants } from "@/constants/AppConstants";
 import { ListPageLayout, TableDownloadReportOption, TableLayout } from "@/@preview/@potidev/layouts-vulpix-pack";
-import { SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
+import { Button, SidebarMainContainer, SidebarToolbar } from "@potidev/react-vulpix-pack";
 import { getColumnsTitle, getColumns, tableId } from "./columns";
 import { BookingsMock } from "@/mocks/BookingsMock";
 import { FileSpreadsheet, Sheet } from "lucide-react";
@@ -115,7 +115,12 @@ export default function TableLayoutPage() {
         { label: "TableLayout" },
       ]} />
       <SidebarMainContainer>
-        <ListPageLayout title="Comprovantes">
+        <ListPageLayout 
+          createHref="google.com" 
+          title="Comprovantes" 
+          description="Faça Checkins"
+          extraButtons={<Button>Teste</Button>}
+        >
          <TableLayout
             search={{
               searchId: "customer.name",
