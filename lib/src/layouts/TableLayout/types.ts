@@ -46,10 +46,9 @@ export interface TableLayoutProps<TData, TValue> {
    */ 
   filters?: TableActiveFiltersProps;
 
-  /**
-   * 
-   */
   report?: TableDownloadReportProps;
 
-  tableColumnsControlProps?: Omit<TableColumnsControlProps<TData>, "table" | "columnsTitle">;
+  tableColumnsControlProps?: Omit<TableColumnsControlProps<TData>, "table" | "columnsTitle" | "onClickResetColumns">;
+
+  onResetColumns: () => void;
 }

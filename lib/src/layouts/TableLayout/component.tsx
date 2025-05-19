@@ -41,6 +41,7 @@ export function TableLayout<TData, TValue>({
   pagination,
   emptyListMessage = "Sem resultados",
   tableColumnsControlProps,
+  onResetColumns,
 }: TableLayoutProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
@@ -94,6 +95,22 @@ export function TableLayout<TData, TValue>({
     }
   };
 
+  const handleOnClickResetColumns = () => {
+    if (tableId) {
+      let newVisibilitiesToStorage: VisibilityState = {};
+
+      for (let index = 0; index < columnsTitle.length; index++) {
+        const item = columnsTitle[index];
+        const key = item.accessorKey.toString();
+        newVisibilitiesToStorage[key] = item.defaultVisibility;
+      }
+
+      table.setColumnVisibility(newVisibilitiesToStorage);
+      onResetColumns && onResetColumns();
+      return;
+    }
+  }
+
   return (
     <div className="flex flex-col w-full gap-6">
       <div className="flex flex-col gap-3 md:gap-3">
@@ -107,7 +124,7 @@ export function TableLayout<TData, TValue>({
           )}
 
           <div className="flex flex-col gap-2 md:flex-row w-full md:w-fit">
-            {columnsTitle ? <TableColumnsControl table={table} columnsTitle={columnsTitle} {...tableColumnsControlProps} /> : null}
+            {columnsTitle ? <TableColumnsControl onClickResetColumns={handleOnClickResetColumns} table={table} columnsTitle={columnsTitle} {...tableColumnsControlProps} /> : null}
             {pagination && pagination.total !== undefined && pagination.total !== 0 ? <TableTotal total={pagination.total} /> : null}
           </div>
         </div>

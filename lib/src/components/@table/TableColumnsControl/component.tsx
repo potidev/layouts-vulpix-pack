@@ -1,11 +1,23 @@
 import React from "react";
 
-import { Button, cn, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger, ScrollArea } from "@potidev/react-vulpix-pack";
-import { ChevronDown } from "lucide-react";
+import { Button, cn, DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger, ScrollArea, Separator } from "@potidev/react-vulpix-pack";
+import { ChevronDown, ListRestart } from "lucide-react";
 import { TableColumnsControlProps } from "./types";
 import { ColumnUtils } from "@potidev/utils-vulpix-pack";
 
-export function TableColumnsControl<TData>({ className, table, columnsTitle, contentClassName, scrollAreaProps, label = "Campos" }: TableColumnsControlProps<TData>) {
+export function TableColumnsControl<TData>({
+  className,
+  table,
+  columnsTitle,
+  contentClassName,
+  scrollAreaProps,
+  label = "Colunas",
+  resetColumnsIcon = ({ className }) => <ListRestart className={className} />,
+  resetColumnsLabel = "Restaurar colunas",
+  resetColumnsTooltip = "Retaurar colunas para a visualização padrão",
+  withoutRestoreReset = false,
+  onClickResetColumns,
+}: TableColumnsControlProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={cn(className)} asChild>
@@ -18,8 +30,8 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
           <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className={contentClassName}>
-        <ScrollArea {...scrollAreaProps}>
+      <DropdownMenuContent align="end" className={cn("p-0", contentClassName)}>
+        <ScrollArea {...scrollAreaProps} className={cn("p-1", scrollAreaProps.className)}>
           {table
             .getAllColumns()
             .filter(
@@ -46,6 +58,19 @@ export function TableColumnsControl<TData>({ className, table, columnsTitle, con
               );
             })}
         </ScrollArea>
+        {
+          withoutRestoreReset === false ? (
+            <>
+              <Separator />
+              <div className="p-1">
+                <DropdownMenuItem onClick={onClickResetColumns} title={resetColumnsTooltip}>
+                  {resetColumnsIcon({ className: "" })}
+                  {resetColumnsLabel}
+                </DropdownMenuItem>
+              </div>
+            </>
+          ) : null
+        }
       </DropdownMenuContent>
     </DropdownMenu>
   );
