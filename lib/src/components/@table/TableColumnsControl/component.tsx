@@ -31,7 +31,7 @@ export function TableColumnsControl<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className={cn("p-0", contentClassName)}>
-        <ScrollArea {...scrollAreaProps} className={cn("p-1", scrollAreaProps.className)}>
+        <ScrollArea {...scrollAreaProps} className={cn("p-1", scrollAreaProps && scrollAreaProps.className ? scrollAreaProps.className : undefined)}>
           {table
             .getAllColumns()
             .filter(

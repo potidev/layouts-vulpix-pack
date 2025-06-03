@@ -43,6 +43,12 @@ export const MySidebar = () => {
                     <span>Table Layout Check</span>
                   </Link>
                 </SidebarMenuButton>
+                <SidebarMenuButton asChild isActive={"/table-layout-simple" === pathname}>
+                  <Link href={"/table-layout-simple"}>
+                    <LayoutDashboard />
+                    <span>Table Layout Simple</span>
+                  </Link>
+                </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
