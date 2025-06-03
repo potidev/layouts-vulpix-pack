@@ -50,5 +50,5 @@ export interface TableLayoutProps<TData, TValue> {
 
   tableColumnsControlProps?: Omit<TableColumnsControlProps<TData>, "table" | "columnsTitle" | "onClickResetColumns">;
 
-  onResetColumns: () => void;
+  onResetColumns?: () => void;
 }
