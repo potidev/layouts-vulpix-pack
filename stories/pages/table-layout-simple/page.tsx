@@ -15,25 +15,23 @@ export const TableLayoutSimple = () => {
   const [bookings, setBookings] = useState<Booking[]>(BookingsMock);
 
   return (
-      <SidebarContainer>
-        <SidebarToolbar className="z-10" breadcrumbs={[
-          { label: AppConstants.SHORT_NAME, href: "/" },
-          { label: "TableLayout" },
-        ]} />
-        <SidebarMainContainer>
-          <ListPageLayout title="Comprovantes">
-          <TableLayout
-              search={{
-                searchId: "customer.name",
-                placeholder: "Pesquisar pelo nome"
-              }}
-              columnsTitle={columnsTitle}
-              columns={getColumns({ refreshData: () => {} })}
-              data={bookings}
-              tableId={tableId}
-            />
-          </ListPageLayout>
-        </SidebarMainContainer>
-      </SidebarContainer>
+    <SidebarContainer>
+      <SidebarToolbar className="z-10" breadcrumbs={[
+        { label: AppConstants.SHORT_NAME, href: "/" },
+        { label: "TableLayout" },
+      ]} />
+      <ListPageLayout title="Comprovantes">
+        <TableLayout
+          search={{
+            searchId: "customer.name",
+            placeholder: "Pesquisar pelo nome"
+          }}
+          columnsTitle={columnsTitle}
+          columns={getColumns({ refreshData: () => { } })}
+          data={bookings}
+          tableId={tableId}
+        />
+      </ListPageLayout>
+    </SidebarContainer>
   );
 }

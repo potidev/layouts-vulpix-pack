@@ -48,4 +48,6 @@ export type ListPageLayoutProps = {
 
   extraContent?: ReactNode;
   extraContentClassName?: string;
+  
+  withoutDefaultPaddingY?: boolean;
 }

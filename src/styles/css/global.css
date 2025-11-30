@@ -7,8 +7,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @utility page-horizontal-padding {
-  padding-inline: var(--spacing-screen-horizontal-padding);
-  @media (width >= 48rem) { padding-inline: var(--spacing-screen-horizontal-padding-md); }
+  padding-inline: var(--spacing-page-horizontal-padding);
+  @media (width >= 48rem) { padding-inline: var(--spacing-page-horizontal-padding-md); }
 }
 
 :root {
@@ -138,14 +138,14 @@
 
   /* screen default horizontal padding */
   --page-horizontal-padding: 16px;
-  --page-horizontal-padding: 48px;
+  --page-horizontal-padding-md: 16px;
   --container-page-horizontal-padding: var(--page-horizontal-padding);
   --container-page-horizontal-padding-md: var(--page-horizontal-padding-md);
   --spacing-page-horizontal-padding: var(--page-horizontal-padding);
   --spacing-page-horizontal-padding-md: var(--page-horizontal-padding-md);
 
   /* max content */
-  --page-max-content: 1360px;
+  --page-max-content: 1536px;
   --container-page-max-content: var(--page-max-content);
   --spacing-page-max-content: var(--page-max-content);
 }

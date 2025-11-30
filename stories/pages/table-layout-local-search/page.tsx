@@ -17,32 +17,30 @@ export default function TableLayoutPage() {
         { label: AppConstants.SHORT_NAME, href: "/" },
         { label: "TableLayout" },
       ]} />
-      <SidebarMainContainer>
-        <ListPageLayout title="Comprovantes">
-         <TableLayout
-            search={{
-              searchId: "customer.name",
-              placeholder: "Pesquisar pelo nome"
-            }}
-            columnsTitle={columnsTitle}
-            columns={getColumns({ refreshData: () => {} })}
-            data={BookingsMock}
-            tableId={tableId}
-            pagination={{
-              total: BookingsMock.length,
-              current: 1,
-              limit: 100,
-            }}
-            filters={{
-              actives:[
-                { value: "ok", key: "status", label: "Status: Ok" },
-                { value: "money", key: "payment", label: "Pagamento: Dinheiro" },
-              ],
-              onRemoveFilter: () => {},
-            }}
-          />
-        </ListPageLayout>
-      </SidebarMainContainer>
+      <ListPageLayout title="Comprovantes">
+        <TableLayout
+          search={{
+            searchId: "customer.name",
+            placeholder: "Pesquisar pelo nome"
+          }}
+          columnsTitle={columnsTitle}
+          columns={getColumns({ refreshData: () => {} })}
+          data={BookingsMock}
+          tableId={tableId}
+          pagination={{
+            total: BookingsMock.length,
+            current: 1,
+            limit: 100,
+          }}
+          filters={{
+            actives:[
+              { value: "ok", key: "status", label: "Status: Ok" },
+              { value: "money", key: "payment", label: "Pagamento: Dinheiro" },
+            ],
+            onRemoveFilter: () => {},
+          }}
+        />
+      </ListPageLayout>
     </SidebarContainer>
   );
 }

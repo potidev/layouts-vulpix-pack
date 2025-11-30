@@ -30,37 +30,35 @@ export default function TableLayoutPage() {
         { label: AppConstants.SHORT_NAME, href: "/" },
         { label: "TableLayout" },
       ]} />
-      <SidebarMainContainer>
-        <ListPageLayout title="Comprovantes">
-         <TableLayout
-            search={{
-              searchType: "external",
-              searchId: "customer.name",
-              placeholder: "Pesquisar pelo nome",
-              searchButton: true,
-              isLoading,
-              onSubmitSearch,
-              rightSearch: <Button>Limpar</Button>,
-            }}
-            columnsTitle={columnsTitle}
-            columns={getColumns({ refreshData: () => {} })}
-            data={bookings}
-            tableId={tableId}
-            pagination={{
-              total: 300,
-              current: 2,
-              limit: 100,
-            }}
-            filters={{
-              actives:[
-                { value: "ok", key: "status", label: "Status: Ok" },
-                { value: "money", key: "payment", label: "Pagamento: Dinheiro" },
-              ],
-              onRemoveFilter: () => {},
-            }}
-          />
-        </ListPageLayout>
-      </SidebarMainContainer>
+      <ListPageLayout title="Comprovantes">
+        <TableLayout
+          search={{
+            searchType: "external",
+            searchId: "customer.name",
+            placeholder: "Pesquisar pelo nome",
+            searchButton: true,
+            isLoading,
+            onSubmitSearch,
+            rightSearch: <Button>Limpar</Button>,
+          }}
+          columnsTitle={columnsTitle}
+          columns={getColumns({ refreshData: () => { } })}
+          data={bookings}
+          tableId={tableId}
+          pagination={{
+            total: 300,
+            current: 2,
+            limit: 100,
+          }}
+          filters={{
+            actives: [
+              { value: "ok", key: "status", label: "Status: Ok" },
+              { value: "money", key: "payment", label: "Pagamento: Dinheiro" },
+            ],
+            onRemoveFilter: () => { },
+          }}
+        />
+      </ListPageLayout>
     </SidebarContainer>
   );
 }

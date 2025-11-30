@@ -13,14 +13,12 @@ export default function FormPageLayoutPage() {
         { label: AppConstants.SHORT_NAME, href: "/" },
         { label: "FormLayout" },
       ]} />
-      <SidebarMainContainer>
-        <FormPageLayout
-          title="Criar Usuário"
-          onClickDelete={() => {}}
-        >
-          <h1>Teste</h1>
-        </FormPageLayout>
-      </SidebarMainContainer>
+      <FormPageLayout
+        title="Criar Usuário"
+        onClickDelete={() => {}}
+      >
+        <h1>Teste</h1>
+      </FormPageLayout>
     </SidebarContainer>
   );
 }

@@ -21,12 +21,13 @@ export const ListPageLayout = ({
   extraButtons, 
   buttonsContainerClassName,
   extraContent,
-  extraContentClassName
+  extraContentClassName,
+  withoutDefaultPaddingY = false
 }: ListPageLayoutProps) => {
   return (
-    <PageMaxContent className={cn(className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
-      <header className="flex flex-col md:flex-row justify-between items-center gap-2">
-        <div className="flex flex-row items-center gap-3 w-full flex-1">
+    <PageMaxContent className={cn(withoutDefaultPaddingY === false ? "py-4" : undefined, className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
+      <header className="flex flex-col md:flex-row justify-between items-center gap-2 w-full">
+        <div className="flex flex-row items-center gap-3 w-full flex-1 flex-wrap">
           <PageHeader
             title={title}
             withBackButton={withBackButton}

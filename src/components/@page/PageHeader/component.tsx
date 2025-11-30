@@ -22,8 +22,8 @@ export const PageHeader = ({ className, withBackButton = false, title, descripti
         <BackButton onClick={() => onClickBackButton ? onClickBackButton() : router.back()} />
       ) : null}
       <section className="flex flex-col gap-1">
-        <h1 className='text-xl font-medium'>
-            {title}
+        <h1 className='text-2xl font-bold'>
+          {title}
         </h1>
         {description ? <Paragraph className="text-sm">{description}</Paragraph> : null}
       </section>

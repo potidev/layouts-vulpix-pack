@@ -13,7 +13,7 @@ export const TableLimit = ({ className, children }: TableLimitProps) => {
   const { state } = useSidebar();
 
   return (
-    <div className={cn(state === "expanded" ? "md:max-w-[calc(100vw-var(--sidebar-width)-32px)]" : "md:max-w-[calc(100vw-47px-32px)]", "max-w-[calc(100vw-24px)]", className)}>
+    <div className={cn(state === "expanded" ? "md:max-w-[calc(100vw-var(--sidebar-width)-calc(var(--page-horizontal-padding-md)*2))]" : "md:max-w-[calc(100vw-47px-calc(var(--page-horizontal-padding)*2))]", "max-w-[calc(100dvw-calc(var(--page-horizontal-padding)*2))]", className)}>
       {children}
     </div>
   );
