@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "module": "NodeNext",
+    "target": "ES6",
+    "jsx": "react",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "include": ["src", "src/types", "**/*.cjs", "stories"],
+  "exclude": ["node_modules"]
+}

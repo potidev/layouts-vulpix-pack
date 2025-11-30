@@ -1,13 +1,88 @@
 {
-  "name": "layouts-vulpix-pack-project",
-  "version": "1.0.0",
-  "private": true,
+  "name": "@potidev/layouts-vulpix-pack",
+  "author": "Eduardo Costa",
+  "version": "0.0.39",
+  "description": "React Vulpix Pack - Layouts components",
+  "main": "dist/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "build.js"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.ts",
+      "require": "./dist/index.ts"
+    }
+  },
   "scripts": {
-    "dev": "npm run exemple",
-    "exemple": "cd ./exemples/dashboard && npm run dev",
-    "version": "cd ./lib && npm run version",
-    "publish": "cd ./lib && npm publish",
-    "watch": "cd ./lib && npm run preview-watch",
-    "install": "cd ./lib && npm install && cd ../exemples/dashboard && npm install"
+    "watch": "chokidar './src/**/*' -c 'npm run build'",
+    "build": "node build.js",
+    "prepare": "npm run build",
+    "version": "node scripts/set-version.js",
+    "copy-src-to-dist": "node scripts/copy-src-to-dist.js",
+    "copy-src-to-dist-preview": "node scripts/copy-src-to-dist-preview.js",
+    "copy-package-json-to-dist-preview": "node scripts/copy-package-json-to-dist-preview.js",
+    "clear-build": "rimraf dist",
+    "clear-build-preview": "rimraf '../exemples/dashboard/src/@preview/@potidev/layouts-vulpix-pack'",
+    "build-preview": "node scripts/build-preview.js",
+    "preview-watch": "chokidar './src/**/*' -c 'npm run build-preview'",
+    "storybook": "storybook dev -p 6006",
+    "storybook-ssl": "NODE_TLS_REJECT_UNAUTHORIZED=0 npm run storybook",
+    "build-storybook": "storybook build"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@potidev/utils-vulpix-pack": "^1.0.17",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tanstack/react-table": "^8.21.3",
+    "next": "15.2.4"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.3",
+    "@potidev/react-vulpix-pack": "^0.6.0",
+    "@storybook/addon-a11y": "^10.1.2",
+    "@storybook/addon-docs": "^10.1.2",
+    "@storybook/addon-styling-webpack": "^3.0.0",
+    "@storybook/addon-themes": "^10.1.2",
+    "@storybook/addon-vitest": "^10.1.2",
+    "@storybook/nextjs-vite": "^10.1.2",
+    "@types/node": "^22.9.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitest/browser-playwright": "^4.0.14",
+    "@vitest/coverage-v8": "^4.0.14",
+    "chalk": "^4.1.2",
+    "chokidar-cli": "^3.0.0",
+    "lucide-react": "^0.479.0",
+    "playwright": "^1.57.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-icons": "^5.3.0",
+    "react-is": "^18.3.1",
+    "rimraf": "^5.0.10",
+    "storybook": "^10.1.2",
+    "tscpaths": "^0.0.9",
+    "typescript": "^5.6.3",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.14"
+  },
+  "peerDependencies": {
+    "@potidev/react-vulpix-pack": "^0.4.43"
+  },
+  "keywords": [
+    "potidev",
+    "components",
+    "layout components",
+    "next.js",
+    "react",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/potidev/layouts-vulpix-pack.git"
   }
 }
