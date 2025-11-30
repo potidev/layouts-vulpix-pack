@@ -24,11 +24,12 @@ export const FormPageLayout = ({
   deleteButtonDisabled,
   buttonsContainerClassName,
   pageMaxContentProps,
+  withoutDefaultPaddingY = false
 }: FormPageLayoutProps) => {
   const router = useRouter();
 
   return (
-    <PageMaxContent className={cn(className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
+    <PageMaxContent className={cn(withoutDefaultPaddingY === false ? "py-4" : undefined, className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
       <div className="flex flex-row justify-between items-center gap-2 w-full">
         <PageHeader
           title={title}
@@ -38,7 +39,7 @@ export const FormPageLayout = ({
         />
         <div className={cn("flex flex-row gap-2", buttonsContainerClassName)}>
           {onClickDelete ? (
-            <Button variant="destructive" onClick={onClickDelete} disabled={deleteButtonDisabled}>
+            <Button size="iconOnMobile" variant="destructive" onClick={onClickDelete} disabled={deleteButtonDisabled}>
               <Trash2 />
               <p className="hidden md:block">{deleteButtonLabel}</p>
             </Button>

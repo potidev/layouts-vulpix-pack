@@ -26,4 +26,6 @@ export type FormPageLayoutProps = {
   contentClassName?: string;
 
   pageMaxContentProps?: Omit<PageMaxContentProps, "className" | "contentClassName">;
+
+  withoutDefaultPaddingY?: boolean;
 }
