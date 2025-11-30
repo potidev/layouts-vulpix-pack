@@ -6,6 +6,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@utility page-horizontal-padding {
+  padding-inline: var(--spacing-screen-horizontal-padding);
+  @media (width >= 48rem) { padding-inline: var(--spacing-screen-horizontal-padding-md); }
+}
+
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(222.2 47.4% 11.2%);
@@ -130,6 +135,19 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-login-dark-primary: #133A85;
   --color-map-background: var(--map-background);
+
+  /* screen default horizontal padding */
+  --page-horizontal-padding: 16px;
+  --page-horizontal-padding: 48px;
+  --container-page-horizontal-padding: var(--page-horizontal-padding);
+  --container-page-horizontal-padding-md: var(--page-horizontal-padding-md);
+  --spacing-page-horizontal-padding: var(--page-horizontal-padding);
+  --spacing-page-horizontal-padding-md: var(--page-horizontal-padding-md);
+
+  /* max content */
+  --page-max-content: 1360px;
+  --container-page-max-content: var(--page-max-content);
+  --spacing-page-max-content: var(--page-max-content);
 }
 
 @layer base {

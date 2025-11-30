@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const readline = require('readline');
 
 // Caminhos dos arquivos
-const readmePath = path.resolve(__dirname, '../../README.md');
+const readmePath = path.resolve(__dirname, '../README.md');
 const packageJsonPath = path.resolve(__dirname, '../package.json');
 
 // Lê a versão atual do package.json

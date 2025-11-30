@@ -1,3 +1,4 @@
+import { PageMaxContentProps } from "@/components";
 import { ReactNode } from "react";
 
 export type DetailsPageLayoutProps = {
@@ -7,7 +8,22 @@ export type DetailsPageLayoutProps = {
   editTitle?: string;
   deleteTitle?: string;
   onClickDelete?: () => void;
-  className?: string;
   extraButton?: ReactNode;
-  backButton?: boolean;
+  withBackButton?: boolean;
+
+  onClickBackButton?: () => void;
+
+  description?: string;
+
+  /**
+     * Container class name
+     */
+  className?: string;
+
+  /**
+   * Content class name
+   */
+  contentClassName?: string;
+
+  pageMaxContentProps?: Omit<PageMaxContentProps, "className" | "contentClassName">;
 }

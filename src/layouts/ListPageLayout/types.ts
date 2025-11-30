@@ -1,3 +1,4 @@
+import { PageMaxContentProps } from "@/components";
 import { ReactNode } from "react";
 
 export type ListPageLayoutProps = {
@@ -25,6 +26,13 @@ export type ListPageLayoutProps = {
    * Container class name
    */
   className?: string;
+
+  /**
+   * Content class name
+   */
+  contentClassName?: string;
+
+  pageMaxContentProps?: Omit<PageMaxContentProps, "className" | "contentClassName">;
 
   onClickCreateButton?: () => void;
 

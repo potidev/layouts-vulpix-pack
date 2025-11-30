@@ -4,11 +4,11 @@ import { Plus } from 'lucide-react';
 import { Button, cn } from "@potidev/react-vulpix-pack";
 
 import { ListPageLayoutProps } from "./types";
-import { PageHeader } from "@/components";
+import { PageHeader, PageMaxContent } from "@/components";
 
-export const ListPageLayout = ({ title, children, createHref, createButtonTitle = "Cadastrar", onClickCreateButton, className, onClickBackButton, withBackButton, description, extraButtons, buttonsContainerClassName }: ListPageLayoutProps) => {
+export const ListPageLayout = ({ title, children, createHref, createButtonTitle = "Cadastrar", pageMaxContentProps, onClickCreateButton, className, contentClassName, onClickBackButton, withBackButton, description, extraButtons, buttonsContainerClassName }: ListPageLayoutProps) => {
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
+    <PageMaxContent className={cn(className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
       <div className="flex flex-row justify-between items-center gap-2 w-full">
         <PageHeader
           title={title}
@@ -38,6 +38,6 @@ export const ListPageLayout = ({ title, children, createHref, createButtonTitle 
         ) : null}
       </div>
       {children}
-    </div>
+    </PageMaxContent>
   )
 }

@@ -6,10 +6,11 @@ import { ArrowLeft, Trash2 } from 'lucide-react';
 import { useRouter } from "next/navigation";
 
 import { FormPageLayoutProps } from "./types";
-import { BackButton, PageHeader } from "@/components";
+import { BackButton, PageHeader, PageMaxContent } from "@/components";
 
 export const FormPageLayout = ({ 
   className,
+  contentClassName,
   children, 
   title, 
   description, 
@@ -22,11 +23,12 @@ export const FormPageLayout = ({
   deleteButtonLabel = "Remover", 
   deleteButtonDisabled,
   buttonsContainerClassName,
+  pageMaxContentProps,
 }: FormPageLayoutProps) => {
   const router = useRouter();
 
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
+    <PageMaxContent className={cn(className)} contentClassName={cn("gap-6", contentClassName)} {...pageMaxContentProps}>
       <div className="flex flex-row justify-between items-center gap-2 w-full">
         <PageHeader
           title={title}
@@ -51,6 +53,6 @@ export const FormPageLayout = ({
           </Card>
         )
       }
-    </div>
+    </PageMaxContent>
   )
 }

@@ -8,26 +8,21 @@ import { ArrowLeft, Pencil, Trash2 } from 'lucide-react';
 import { Button, cn, Text } from "@potidev/react-vulpix-pack";
 
 import { DetailsPageLayoutProps } from './types';
+import { PageHeader, PageMaxContent } from "@/components";
 
-export const DetailsPageLayout = ({ title, children, editHref, editTitle = "Editar", onClickDelete, className, extraButton, backButton = false, deleteTitle = "Remover" }: DetailsPageLayoutProps) => {
+export const DetailsPageLayout = ({ title, children, editHref, editTitle = "Editar", onClickDelete, className, contentClassName, pageMaxContentProps, extraButton, withBackButton = false, description, onClickBackButton, deleteTitle = "Remover" }: DetailsPageLayoutProps) => {
   const router = useRouter();
   
   return (
-    <div className={cn("flex flex-col gap-6", className)}>
+    <PageMaxContent className={className} contentClassName={cn("gap-6", contentClassName)}>
       <div className="flex flex-row items-center justify-between gap-4 gap-y-2 w-full flex-wrap">
         <div className="flex flex-row items-center gap-2">
-          {
-            backButton && (
-              <Button size="iconMd" variant="ghost" onClick={() => router.back()} >
-              <ArrowLeft className='h-4 w-4 sm:h-5 sm:w-5' />
-            </Button>
-            )
-          }
-          <Text asChild>
-            <h1 className='text-xl'>
-              {title}
-            </h1>
-          </Text>
+          <PageHeader
+            title={title}
+            withBackButton={withBackButton}
+            description={description}
+            onClickBackButton={onClickBackButton}
+          />
         </div>
         <div className="flex flex-row gap-1 md:gap-2">
           {editHref && (
@@ -48,6 +43,6 @@ export const DetailsPageLayout = ({ title, children, editHref, editTitle = "Edit
         </div>
       </div>
       {children}
-    </div>
+    </PageMaxContent>
   )
 }

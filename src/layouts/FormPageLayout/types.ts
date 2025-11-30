@@ -1,7 +1,7 @@
+import { PageMaxContentProps } from "@/components";
 import { ReactNode } from "react";
 
 export type FormPageLayoutProps = {
-  className?: string;
   title: string;
   description?: string;
   children: ReactNode;
@@ -14,4 +14,16 @@ export type FormPageLayoutProps = {
   childrenWithoutCard?: boolean;
   withoutBackButton?: boolean;
   cardClassName?: string;
+
+  /**
+   * Container class name
+   */
+  className?: string;
+
+  /**
+   * Content class name
+   */
+  contentClassName?: string;
+
+  pageMaxContentProps?: Omit<PageMaxContentProps, "className" | "contentClassName">;
 }
