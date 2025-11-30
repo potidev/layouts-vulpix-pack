@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { ReactNode } from "react";
 
 import { cn, Paragraph, Text } from "@potidev/react-vulpix-pack";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ import { BackButton } from "@/components/@atom";
 export type PageHeaderProps = {
   className?: string;
   withBackButton?: boolean;
-  description?: string;
+  description?: ReactNode;
   title: string;
   onClickBackButton?: () => void;
 };
@@ -22,11 +22,9 @@ export const PageHeader = ({ className, withBackButton = false, title, descripti
         <BackButton onClick={() => onClickBackButton ? onClickBackButton() : router.back()} />
       ) : null}
       <section className="flex flex-col gap-1">
-        <Text asChild>
-          <h1 className='text-xl'>
+        <h1 className='text-xl font-medium'>
             {title}
-          </h1>
-        </Text>
+        </h1>
         {description ? <Paragraph className="text-sm">{description}</Paragraph> : null}
       </section>
     </div>

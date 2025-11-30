@@ -40,9 +40,12 @@ export type ListPageLayoutProps = {
 
   onClickBackButton?: () => void;
 
-  description?: string;
+  description?: ReactNode;
 
   extraButtons?: ReactNode;
 
   buttonsContainerClassName?: string;
+
+  extraContent?: ReactNode;
+  extraContentClassName?: string;
 }
