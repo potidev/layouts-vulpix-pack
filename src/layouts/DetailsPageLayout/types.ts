@@ -26,4 +26,9 @@ export type DetailsPageLayoutProps = {
   contentClassName?: string;
 
   pageMaxContentProps?: Omit<PageMaxContentProps, "className" | "contentClassName">;
+
+  /**
+   * @deprecated Use withBackButton instead
+   */
+  backButton?: boolean;
 }

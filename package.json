@@ -1,7 +1,7 @@
 {
   "name": "@potidev/layouts-vulpix-pack",
   "author": "Eduardo Costa",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React Vulpix Pack - Layouts components",
   "main": "dist/index.ts",
   "sideEffects": false,
