@@ -10,11 +10,11 @@ import { Button, cn, Text } from "@potidev/react-vulpix-pack";
 import { DetailsPageLayoutProps } from './types';
 import { PageHeader, PageMaxContent } from "@/components";
 
-export const DetailsPageLayout = ({ title, children, editHref, editTitle = "Editar", onClickDelete, className, contentClassName, pageMaxContentProps, extraButton, withBackButton = false, description, onClickBackButton, deleteTitle = "Remover" }: DetailsPageLayoutProps) => {
+export const DetailsPageLayout = ({ title, children, editHref, editTitle = "Editar", onClickDelete, className, contentClassName, pageMaxContentProps, extraButton, withBackButton = false, description, onClickBackButton, deleteTitle = "Remover", withoutDefaultPaddingY = false }: DetailsPageLayoutProps) => {
   const router = useRouter();
   
   return (
-    <PageMaxContent className={className} contentClassName={cn("gap-6", contentClassName)}>
+    <PageMaxContent className={cn(withoutDefaultPaddingY === false ? "py-4" : undefined, className)} contentClassName={cn("gap-6", contentClassName)}>
       <div className="flex flex-row items-center justify-between gap-4 gap-y-2 w-full flex-wrap">
         <div className="flex flex-row items-center gap-2">
           <PageHeader

@@ -31,4 +31,6 @@ export type DetailsPageLayoutProps = {
    * @deprecated Use withBackButton instead
    */
   backButton?: boolean;
+
+  withoutDefaultPaddingY?: boolean;
 }
